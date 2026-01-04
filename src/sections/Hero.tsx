@@ -18,13 +18,14 @@ const PARTICLES = [
 export function Hero() {
   const reduceMotion = useReducedMotion()
 
+  // Faster animations for LCP optimization
   const fadeUp = {
-    initial: reduceMotion ? {} : { opacity: 0, y: 40 },
+    initial: reduceMotion ? {} : { opacity: 0, y: 20 },
     animate: reduceMotion ? {} : { opacity: 1, y: 0 },
   }
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden bg-slate-950">
       {/* Cinematic Video Background */}
       <div className="absolute inset-0">
         <video
@@ -33,7 +34,8 @@ export function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
+          poster="/media/hero-poster.jpg"
         >
           <source src="/media/video.mp4" type="video/mp4" />
         </video>
@@ -66,7 +68,7 @@ export function Hero() {
             {/* Badge */}
             <motion.div
               {...fadeUp}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0 }}
               className="inline-flex items-center gap-2 mb-4 flex-wrap"
             >
               <div className="flex items-center gap-2 px-4 py-2.5 rounded-full glass-dark border border-white/10">
@@ -107,7 +109,7 @@ export function Hero() {
             {/* Main Headline */}
             <motion.h1
               {...fadeUp}
-              transition={{ duration: 1, delay: 0.4 }}
+              transition={{ duration: 0.4, delay: 0.05 }}
               className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight mb-4"
             >
               Schengen Appointment in{' '}
@@ -130,7 +132,7 @@ export function Hero() {
             {/* Subtitle */}
             <motion.p
               {...fadeUp}
-              transition={{ duration: 1, delay: 0.6 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="text-sm sm:text-base text-white/70 max-w-2xl mb-6 leading-relaxed"
             >
               Get expert assistance for your Schengen appointment in Dubai — fast, reliable, and stress-free.
@@ -140,7 +142,7 @@ export function Hero() {
             {/* CTA Buttons */}
             <motion.div
               {...fadeUp}
-              transition={{ duration: 1, delay: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
               className="flex flex-col sm:flex-row gap-3 mb-8"
             >
               <a href="https://wa.me/971568456002" target="_blank" rel="noopener noreferrer" className="btn-premium btn-gold">
@@ -160,7 +162,7 @@ export function Hero() {
             {/* Trust Indicators */}
             <motion.div
               {...fadeUp}
-              transition={{ duration: 1, delay: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="grid grid-cols-2 sm:grid-cols-4 gap-3"
             >
               {[
@@ -184,7 +186,7 @@ export function Hero() {
             {/* Disclaimer */}
             <motion.div
               {...fadeUp}
-              transition={{ duration: 1, delay: 1.2 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
               className="mt-5 p-3 rounded-xl glass-dark border border-white/10"
             >
               <div className="flex flex-col sm:flex-row items-center gap-4">

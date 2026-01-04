@@ -21,6 +21,9 @@
       content="Fast, transparent, and expert-handled visa services with a high approval success rate."
     />
 
+    <!-- Preload critical LCP image -->
+    <link rel="preload" href="/media/logo.webp" as="image" type="image/webp" fetchpriority="high" />
+    
     <!-- Preconnect to external origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,7 +76,42 @@
     </noscript>
   </head>
   <body>
+    <!-- Static header for instant LCP - will be replaced by React -->
+    <nav id="static-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+      <div style="max-width:1280px;margin:0 auto;padding:0 1rem">
+        <div class="flex items-center justify-between py-4">
+          <a href="#" class="flex items-center gap-3">
+            <img src="/media/logo.webp" alt="SchengenDubai" width="56" height="56" fetchpriority="high" class="w-14 h-14 rounded-xl shadow-lg shadow-amber-500/30 object-contain" style="width:3.5rem;height:3.5rem;border-radius:0.75rem" />
+            <span style="font-size:1.125rem;font-weight:700;color:#fff;letter-spacing:-0.025em">Schengen<span style="color:#fbbf24">Dubai</span></span>
+          </a>
+          <div class="hidden md:flex items-center" style="gap:1.5rem">
+            <a href="#countries" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Countries</a>
+            <a href="#process" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Services</a>
+            <a href="#testimonials" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Reviews</a>
+            <a href="#faq" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">FAQ</a>
+            <a href="#contact" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;font-weight:600;padding:0.625rem 1.25rem;border-radius:9999px;font-size:0.875rem;text-decoration:none">Book Now</a>
+          </div>
+          <button class="md:hidden" style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center" aria-label="Menu">
+            <svg style="width:1.25rem;height:1.25rem;color:#fff" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Hide static header once React hydrates
+      window.addEventListener('DOMContentLoaded', function() {
+        var check = setInterval(function() {
+          if (document.querySelector('#root nav')) {
+            var sh = document.getElementById('static-header');
+            if (sh) sh.style.display = 'none';
+            clearInterval(check);
+          }
+        }, 50);
+      });
+    </script>
   </body>
 </html>

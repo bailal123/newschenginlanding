@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Schengen visa service hero background">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#020617"/>
+      <stop offset="0.55" stop-color="#0b1f4a"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <radialGradient id="r" cx="28%" cy="18%" r="65%">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <rect width="1600" height="900" fill="url(#r)"/>
+  <g opacity="0.18" fill="#ffffff">
+    <circle cx="1260" cy="180" r="120"/>
+    <circle cx="1340" cy="260" r="70"/>
+    <circle cx="1180" cy="260" r="55"/>
+  </g>
+  <g fill="#ffffff" opacity="0.92">
+    <text x="90" y="130" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" letter-spacing="6">PREMIUM SCHENGEN VISA</text>
+    <text x="90" y="210" font-family="Inter, system-ui, sans-serif" font-size="56" font-weight="800">Your Gateway to Europe</text>
+    <text x="90" y="268" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="600" opacity="0.88">Replace this poster by adding /public/media/hero.mp4</text>
+  </g>
+  <g transform="translate(90 330)" opacity="0.92">
+    <rect x="0" y="0" width="520" height="80" rx="40" fill="#ffffff" opacity="0.15"/>
+    <text x="30" y="52" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Autoplay background video (muted, loop)</text>
+  </g>
+</svg>

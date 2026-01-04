@@ -1,29 +1,13 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import { Container } from '../components/Container'
 
-// Pre-generated static particle positions (deterministic for SSR/hydration)
+// Pre-generated static particle positions
 const PARTICLES = [
   { left: 15, top: 25, delay: 0.5 }, { left: 85, top: 10, delay: 1.2 },
   { left: 30, top: 70, delay: 2.1 }, { left: 60, top: 45, delay: 0.8 },
   { left: 10, top: 55, delay: 3.5 }, { left: 90, top: 80, delay: 1.8 },
-  { left: 45, top: 15, delay: 4.2 }, { left: 75, top: 65, delay: 0.3 },
-  { left: 20, top: 90, delay: 2.7 }, { left: 55, top: 35, delay: 1.5 },
-  { left: 5, top: 40, delay: 3.1 }, { left: 95, top: 60, delay: 4.8 },
-  { left: 40, top: 85, delay: 0.9 }, { left: 70, top: 20, delay: 2.4 },
-  { left: 25, top: 50, delay: 3.8 }, { left: 80, top: 75, delay: 1.1 },
-  { left: 50, top: 5, delay: 4.5 }, { left: 35, top: 95, delay: 2.0 },
-  { left: 65, top: 30, delay: 3.3 }, { left: 12, top: 68, delay: 4.0 },
 ]
 
 export function Hero() {
-  const reduceMotion = useReducedMotion()
-
-  // Faster animations for LCP optimization
-  const fadeUp = {
-    initial: reduceMotion ? {} : { opacity: 0, y: 20 },
-    animate: reduceMotion ? {} : { opacity: 1, y: 0 },
-  }
-
   return (
     <section className="relative min-h-screen overflow-hidden bg-slate-950">
       {/* Cinematic Video Background */}
@@ -66,11 +50,7 @@ export function Hero() {
         <div className="relative flex items-center min-h-[85vh] pt-20 pb-12">
           <div className="w-full max-w-4xl">
             {/* Badge */}
-            <motion.div
-              {...fadeUp}
-              transition={{ duration: 0.4, delay: 0 }}
-              className="inline-flex items-center gap-2 mb-4 flex-wrap"
-            >
+            <div className="inline-flex items-center gap-2 mb-4 flex-wrap animate-fade-in-up">
               <div className="flex items-center gap-2 px-4 py-2.5 rounded-full glass-dark border border-white/10">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -104,13 +84,12 @@ export function Hero() {
                   <span className="text-xs text-slate-500">(2,847)</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Main Headline */}
-            <motion.h1
-              {...fadeUp}
-              transition={{ duration: 0.4, delay: 0.05 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight mb-4"
+            <h1
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight mb-4 animate-fade-in-up"
+              style={{ animationDelay: '0.05s' }}
             >
               Schengen Appointment in{' '}
               <span className="relative inline-block">
@@ -127,23 +106,21 @@ export function Hero() {
               </span>
               <br />
               <span className="text-gradient-light">Planning to Travel to Europe?</span>
-            </motion.h1>
+            </h1>
 
             {/* Subtitle */}
-            <motion.p
-              {...fadeUp}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-sm sm:text-base text-white/70 max-w-2xl mb-6 leading-relaxed"
+            <p
+              className="text-sm sm:text-base text-white/70 max-w-2xl mb-6 leading-relaxed animate-fade-in-up"
+              style={{ animationDelay: '0.1s' }}
             >
               Get expert assistance for your Schengen appointment in Dubai — fast, reliable, and stress-free.
               Our Dubai-based team helps you prepare documents, book your appointment, and get ready for your trip.
-            </motion.p>
+            </p>
 
             {/* CTA Buttons */}
-            <motion.div
-              {...fadeUp}
-              transition={{ duration: 0.4, delay: 0.15 }}
-              className="flex flex-col sm:flex-row gap-3 mb-8"
+            <div
+              className="flex flex-col sm:flex-row gap-3 mb-8 animate-fade-in-up"
+              style={{ animationDelay: '0.15s' }}
             >
               <a href="https://wa.me/971568456002" target="_blank" rel="noopener noreferrer" className="btn-premium btn-gold">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -157,13 +134,12 @@ export function Hero() {
                 </svg>
                 Free Consultation
               </a>
-            </motion.div>
+            </div>
 
             {/* Trust Indicators */}
-            <motion.div
-              {...fadeUp}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-3"
+            <div
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 animate-fade-in-up"
+              style={{ animationDelay: '0.2s' }}
             >
               {[
                 { icon: '🏆', label: '10+ Years', desc: 'Of Experience' },
@@ -181,13 +157,12 @@ export function Hero() {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
 
             {/* Disclaimer */}
-            <motion.div
-              {...fadeUp}
-              transition={{ duration: 0.4, delay: 0.25 }}
-              className="mt-5 p-3 rounded-xl glass-dark border border-white/10"
+            <div
+              className="mt-5 p-3 rounded-xl glass-dark border border-white/10 animate-fade-in-up"
+              style={{ animationDelay: '0.25s' }}
             >
               <div className="flex flex-col sm:flex-row items-center gap-4">
                 <div className="flex items-center gap-2 shrink-0">
@@ -273,29 +248,10 @@ export function Hero() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </Container>
-
-      {/* Scroll Indicator */}
-      {/* <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-[10px] text-white/40 uppercase tracking-widest">Scroll</span>
-          <div className="w-5 h-9 rounded-full border-2 border-white/20 flex justify-center pt-2">
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1 h-1 rounded-full bg-white/70"
-            />
-          </div>
-        </div>
-      </motion.div> */}
     </section>
   )
 }

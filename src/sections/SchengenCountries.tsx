@@ -100,8 +100,11 @@ export function SchengenCountries() {
           {/* Flags Circular Layout */}
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-5xl mx-auto">
             {countries.map((country, i) => (
-              <motion.div
+              <motion.a
                 key={country.code}
+                href="https://wa.me/971568456002"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.5, rotateY: 0 }}
                 whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
                 viewport={{ once: true }}
@@ -144,7 +147,7 @@ export function SchengenCountries() {
                   </div>
                   <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 rotate-45" />
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </motion.div>
@@ -167,8 +170,11 @@ export function SchengenCountries() {
           
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {popularDestinations.map((country, i) => (
-              <motion.button
+              <motion.a
                 key={country.code}
+                href="https://wa.me/971568456002"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -188,7 +194,7 @@ export function SchengenCountries() {
                 <svg className="w-4 h-4 text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </motion.button>
+              </motion.a>
             ))}
           </div>
         </motion.div>
@@ -206,12 +212,12 @@ export function SchengenCountries() {
               <p className="text-blue-100 text-sm font-medium mb-1">Ready to explore Europe?</p>
               <p className="text-xl sm:text-2xl font-bold">Start Your Visa Application Today</p>
             </div>
-            <button className="btn-premium bg-white text-blue-700 hover:bg-blue-50 hover:scale-105 shadow-lg">
+            <a href="https://wa.me/971568456002" target="_blank" rel="noopener noreferrer" className="btn-premium bg-white text-blue-700 hover:bg-blue-50 hover:scale-105 shadow-lg">
               Apply Now
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
+            </a>
           </div>
         </motion.div>
       </Container>

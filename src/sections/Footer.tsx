@@ -8,16 +8,12 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <span className="text-xl font-bold">SchengenVisa<span className="text-amber-400">.pro</span></span>
+              <img src="/media/logo.png" alt="SchengenDubai" className="w-10 h-10 rounded-xl object-contain" />
+              <span className="text-xl font-bold">Schengen<span className="text-amber-400">Dubai</span></span>
             </div>
             <p className="text-slate-400 mb-6 max-w-sm leading-relaxed">
-              Premium Schengen visa services for GCC & Middle East residents. 
-              Expert-handled applications with the highest approval success rate.
+              Schengen appointment services in Dubai. Expert document preparation, 
+              quick booking, and complete guidance for your European journey.
             </p>
             <div className="flex gap-3">
               {['facebook', 'instagram', 'linkedin', 'twitter'].map((social) => (
@@ -55,13 +51,13 @@ export function Footer() {
                 <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                info@schengenvisa.pro
+                info@schengenagentdubai.com
               </li>
               <li className="flex items-center gap-2">
                 <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                +971 XX XXX XXXX
+                +971 56 845 6002
               </li>
               <li className="flex items-start gap-2">
                 <svg className="w-4 h-4 text-amber-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -74,14 +70,26 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Disclaimer */}
+        <div className="border-t border-white/10 pt-8 mb-8">
+          <p className="text-xs text-slate-500 leading-relaxed">
+            <strong className="text-slate-400">Disclaimer:</strong> Schengen Agent Dubai is a private appointment assistance service. We are not affiliated with any government embassy or consulate. We assist clients in preparing and organizing their documentation and securing appointment slots. Visa approval decisions are made solely by the respective embassies and consulates. Our services do not guarantee visa approval.
+          </p>
+        </div>
+
         {/* Bottom */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} SchengenVisa.pro. All rights reserved.
-          </p>
+          <div className="text-center sm:text-left">
+            <p className="text-slate-500 text-sm">
+              Copyright © {new Date().getFullYear()} Schengen Agent Dubai UAE - Operated by RIEAYAH ALMALAKIA TECHNICAL SERVICES EST. All rights reserved.
+            </p>
+            <p className="text-slate-600 text-xs mt-1">
+              Developed by <span className="text-amber-400/80">Belal Bakrly</span>
+            </p>
+          </div>
           <div className="flex gap-6 text-sm text-slate-500">
-            <a href="#" className="hover:text-white transition">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition">Terms of Service</a>
+            <a href="/privacy" className="hover:text-white transition">Privacy Policy</a>
+            <a href="/terms" className="hover:text-white transition">Terms of Service</a>
           </div>
         </div>
       </Container>

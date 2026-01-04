@@ -4,11 +4,11 @@ import { Container } from '../components/Container'
 const steps = [
   {
     number: '01',
-    title: 'Free Eligibility Check',
-    description: 'Share your travel plans and we\'ll confirm the right path for your Schengen visa application.',
+    title: 'Free Consultation',
+    description: 'Share your travel plans and we\'ll confirm the right path for your Schengen appointment in Dubai.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
       </svg>
     ),
     color: 'from-blue-500 to-blue-600',
@@ -16,7 +16,7 @@ const steps = [
   {
     number: '02',
     title: 'Document Preparation',
-    description: 'Receive a personalized checklist and expert review of all your documents to embassy-ready standard.',
+    description: 'We help you prepare all required documents including form filling and verification.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -27,7 +27,7 @@ const steps = [
   {
     number: '03',
     title: 'Appointment Booking',
-    description: 'We secure the best available slot at the embassy and guide you through biometrics requirements.',
+    description: 'We secure the best available slot at the embassy and prepare you for your visit.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -37,19 +37,19 @@ const steps = [
   },
   {
     number: '04',
-    title: 'Submission & Follow-up',
-    description: 'Your application is submitted correctly. We track status and keep you updated with transparent timelines.',
+    title: 'Embassy Visit Support',
+    description: 'Complete guidance on what to expect and how to present your application confidently.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
       </svg>
     ),
     color: 'from-purple-500 to-purple-600',
   },
   {
     number: '05',
-    title: 'Visa Delivered',
-    description: 'Passport return coordinated based on your preference, with travel-ready confirmation and support.',
+    title: 'Ready for Your Trip',
+    description: 'Simple process, quick results, and complete guidance every step of the way.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -78,14 +78,14 @@ export function ProcessTimeline() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold tracking-wider uppercase mb-4">
-              Our Process
+              Documents We Assist With
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
-              Simple. <span className="gold-accent">Transparent.</span> Effective.
+              Simple. <span className="gold-accent">Guided.</span> Process.
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              A streamlined 5-step process designed to make your Schengen visa 
-              application as smooth and stress-free as possible.
+              We help you with document preparation, form filling, appointment booking,
+              and complete guidance throughout your Schengen application journey.
             </p>
           </motion.div>
         </div>

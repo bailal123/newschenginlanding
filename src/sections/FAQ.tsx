@@ -4,28 +4,28 @@ import { Container } from '../components/Container'
 
 const faqs = [
   {
-    question: 'What is the Schengen visa refusal risk, and how do you minimize it?',
-    answer: 'No service can guarantee approval as the final decision rests with the embassy. However, we significantly reduce avoidable refusal risks through thorough document review, financial evidence preparation, clear travel intent documentation, and pre-submission quality checks. Our 98% approval rate reflects our meticulous approach.',
+    question: 'What services do you offer for Schengen appointments in Dubai?',
+    answer: 'We provide comprehensive support including document preparation, form filling, appointment booking, and complete guidance throughout your Schengen application process. Our Dubai-based team helps you prepare everything needed for a successful embassy visit.',
   },
   {
-    question: 'How long does Schengen visa processing typically take?',
-    answer: 'Standard processing takes 10-15 working days, though it can vary by embassy and season. We offer express services where available. After your eligibility check, we provide a realistic timeline based on your destination country and current embassy workload.',
+    question: 'How long does the Schengen appointment booking process take?',
+    answer: 'Appointment availability varies by embassy and season. We work to secure the best available slots quickly. After your initial consultation, we provide a realistic timeline based on your destination country and current embassy workload.',
   },
   {
-    question: 'What documents are required for a Schengen visa application?',
-    answer: 'Common requirements include: valid passport, recent photos, travel insurance, flight/accommodation bookings, bank statements (last 3-6 months), employment/business documents, and residency proof. Your personalized checklist will be tailored to your specific situation and destination.',
+    question: 'What documents do I need for my Schengen appointment?',
+    answer: 'Common requirements include: valid passport, recent photos, travel insurance, flight/accommodation bookings, bank statements (last 3-6 months), employment/business documents, and residency proof. We provide a personalized checklist tailored to your specific situation.',
   },
   {
-    question: 'Do you handle visa applications for all GCC countries?',
-    answer: 'Yes, we specialize in Schengen visa applications for residents of UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman. Our team understands the specific requirements for each nationality and residency type.',
+    question: 'Can you help with tourism, business, and family travel?',
+    answer: 'Yes! Whether it is tourism, business, or family travel, we guide you through every step. Our team has experience with all types of Schengen applications and will ensure your documents match your travel purpose.',
   },
   {
-    question: 'What happens if my visa is refused?',
-    answer: 'In the rare case of a refusal, we provide a detailed analysis of the decision, advise on appeal options where applicable, and offer guidance on reapplication. Our fee structure includes partial refund provisions for refused applications.',
+    question: 'Are you affiliated with any embassy or government authority?',
+    answer: 'No. We are a private travel service provider offering document and appointment assistance. We are not affiliated with any embassy or government authority. Our role is to help you prepare and navigate the process smoothly.',
   },
   {
-    question: 'Can you help with multiple-entry and long-term Schengen visas?',
-    answer: 'Absolutely. We assist with all Schengen visa types including single-entry, multiple-entry, and long-term visas. For frequent travelers, we can help build a strong application for multi-year multiple-entry visas.',
+    question: 'Why should I choose your agency over others in Dubai?',
+    answer: 'With 10+ years of experience, we are among the best travel agencies in Dubai for Schengen support. Our Dubai-based team offers personalized service, quick appointment booking, expert document preparation, and trusted guidance throughout your journey.',
   },
 ]
 
@@ -52,8 +52,8 @@ export function FAQ() {
               <span className="gold-accent">We Have Answers.</span>
             </h2>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              Everything you need to know about Schengen visa applications, 
-              processing times, and our services. Can't find your answer? 
+              Everything you need to know about Schengen appointments in Dubai, 
+              our services, and how we can help. Can't find your answer? 
               Contact us directly.
             </p>
             

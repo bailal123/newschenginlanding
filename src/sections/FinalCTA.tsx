@@ -146,8 +146,10 @@ export function FinalCTA() {
                     
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1.5">Residency Country</label>
+                        <label htmlFor="country-select" className="block text-sm font-medium text-slate-700 mb-1.5">Residency Country</label>
                         <select
+                          id="country-select"
+                          aria-label="Select your residency country"
                           required
                           value={formData.country}
                           onChange={(e) => setFormData({ ...formData, country: e.target.value })}
@@ -164,8 +166,10 @@ export function FinalCTA() {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1.5">Destination</label>
+                        <label htmlFor="destination-select" className="block text-sm font-medium text-slate-700 mb-1.5">Destination</label>
                         <select
+                          id="destination-select"
+                          aria-label="Select your destination country"
                           required
                           value={formData.destination}
                           onChange={(e) => setFormData({ ...formData, destination: e.target.value })}

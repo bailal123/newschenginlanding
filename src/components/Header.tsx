@@ -38,7 +38,10 @@ export function Header() {
             transition={{ duration: 0.8 }}
             className="flex items-center gap-3"
           >
-            <img src="/media/logo.png" alt="SchengenDubai" className="w-14 h-14 rounded-xl shadow-lg shadow-amber-500/30 object-contain" />
+            <picture>
+              <source srcSet="/media/logo.webp" type="image/webp" />
+              <img src="/media/logo.png" alt="SchengenDubai" width="56" height="56" loading="eager" fetchPriority="high" className="w-14 h-14 rounded-xl shadow-lg shadow-amber-500/30 object-contain" />
+            </picture>
             <span className="text-lg font-bold text-white tracking-tight">Schengen<span className="text-amber-400">Dubai</span></span>
           </motion.a>
           

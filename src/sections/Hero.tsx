@@ -267,7 +267,7 @@ export function Hero() {
                   </div>
                   {/* Tamara */}
                   <div className="h-9 px-3 rounded-lg bg-white flex items-center justify-center shadow-sm border border-slate-200">
-                    <img src="/media/tamara-1-min.png" alt="Tamara" className="h-5 object-contain" />
+                    <img src="/media/tamara-1-min.png" alt="Tamara" width="35" height="20" loading="lazy" className="h-5 w-auto object-contain" />
                   </div>
                 </div>
               </div>

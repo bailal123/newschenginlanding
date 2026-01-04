@@ -8,7 +8,10 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/media/logo.png" alt="SchengenDubai" className="w-10 h-10 rounded-xl object-contain" />
+              <picture>
+                <source srcSet="/media/logo.webp" type="image/webp" />
+                <img src="/media/logo.png" alt="SchengenDubai" width="40" height="40" loading="lazy" className="w-10 h-10 rounded-xl object-contain" />
+              </picture>
               <span className="text-xl font-bold">Schengen<span className="text-amber-400">Dubai</span></span>
             </div>
             <p className="text-slate-400 mb-6 max-w-sm leading-relaxed">
@@ -72,22 +75,22 @@ export function Footer() {
 
         {/* Disclaimer */}
         <div className="border-t border-white/10 pt-8 mb-8">
-          <p className="text-xs text-slate-500 leading-relaxed">
-            <strong className="text-slate-400">Disclaimer:</strong> Schengen Agent Dubai is a private appointment assistance service. We are not affiliated with any government embassy or consulate. We assist clients in preparing and organizing their documentation and securing appointment slots. Visa approval decisions are made solely by the respective embassies and consulates. Our services do not guarantee visa approval.
+          <p className="text-xs text-slate-300 leading-relaxed">
+            <strong className="text-slate-200">Disclaimer:</strong> Schengen Agent Dubai is a private appointment assistance service. We are not affiliated with any government embassy or consulate. We assist clients in preparing and organizing their documentation and securing appointment slots. Visa approval decisions are made solely by the respective embassies and consulates. Our services do not guarantee visa approval.
           </p>
         </div>
 
         {/* Bottom */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-center sm:text-left">
-            <p className="text-slate-500 text-sm">
+            <p className="text-slate-300 text-sm">
               Copyright © {new Date().getFullYear()} Schengen Agent Dubai UAE - Operated by RIEAYAH ALMALAKIA TECHNICAL SERVICES EST. All rights reserved.
             </p>
-            <p className="text-slate-600 text-xs mt-1">
-              Developed by <span className="text-amber-400/80">Belal Bakrly</span>
+            <p className="text-slate-400 text-xs mt-1">
+              Developed by <span className="text-amber-400">Belal Bakrly</span>
             </p>
           </div>
-          <div className="flex gap-6 text-sm text-slate-500">
+          <div className="flex gap-6 text-sm text-slate-300">
             <a href="/privacy" className="hover:text-white transition">Privacy Policy</a>
             <a href="/terms" className="hover:text-white transition">Terms of Service</a>
           </div>

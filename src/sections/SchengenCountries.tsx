@@ -132,8 +132,11 @@ export function SchengenCountries() {
                     src={`https://flagcdn.com/w80/${country.code.toLowerCase()}.png`}
                     srcSet={`https://flagcdn.com/w160/${country.code.toLowerCase()}.png 2x`}
                     alt={`${country.name} flag`}
+                    width="64"
+                    height="64"
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 
@@ -186,7 +189,11 @@ export function SchengenCountries() {
                 <img 
                   src={`https://flagcdn.com/w40/${country.code.toLowerCase()}.png`}
                   alt={country.name}
+                  width="28"
+                  height="20"
                   className="w-7 h-5 rounded object-cover shadow-sm"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span className="font-semibold text-slate-700 group-hover:text-blue-700 transition-colors">
                   {country.name}

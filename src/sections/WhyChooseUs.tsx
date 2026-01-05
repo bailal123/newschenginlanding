@@ -8,8 +8,8 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: '10+ Years of Experience',
-    description: 'Over a decade of expertise in Schengen visa applications for Dubai residents.',
+    title: '5+ Years of Experience',
+    description: 'Over a decade of expertise in Schengen travel applications for Dubai residents.',
     highlight: 'Experienced',
   },
   {

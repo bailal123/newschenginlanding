@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     question: 'Why should I choose your agency over others in Dubai?',
-    answer: 'With 10+ years of experience, we are among the best travel agencies in Dubai for Schengen support. Our Dubai-based team offers personalized service, quick appointment booking, expert document preparation, and trusted guidance throughout your journey.',
+    answer: 'With 5+ years of experience, we are among the best travel agencies in Dubai for Schengen support. Our Dubai-based team offers personalized service, quick appointment booking, expert document preparation, and trusted guidance throughout your journey.',
   },
 ]
 

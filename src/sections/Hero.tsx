@@ -152,7 +152,7 @@ export function Hero() {
               style={{ animationDelay: '0.2s' }}
             >
               {[
-                { icon: '🏆', label: '10+ Years', desc: 'Of Experience' },
+                { icon: '🏆', label: '5+ Years', desc: 'Of Experience' },
                 { icon: '📅', label: 'Quick Booking', desc: 'Fast Appointments' },
                 { icon: '📋', label: 'Expert Docs', desc: 'Document Preparation' },
                 { icon: '🛡️', label: 'Trusted Team', desc: 'Dubai-Based' },

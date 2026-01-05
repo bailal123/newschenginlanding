@@ -21,22 +21,21 @@
       content="Fast, transparent, and expert-handled visa services with a high approval success rate."
     />
 
-    <!-- Preload critical LCP image -->
-    <link rel="preload" href="/media/logo.webp" as="image" type="image/webp" fetchpriority="high" />
-    <link rel="preload" href="/media/hero-poster.jpg" as="image" fetchpriority="high" />
-    
-    <!-- Preconnect to external origins -->
+    <!-- Preconnect to external origins FIRST -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://flagcdn.com" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/media/logo.webp" as="image" type="image/webp" fetchpriority="high" />
+    
+    <!-- DNS prefetch for non-critical origins -->
     <link rel="dns-prefetch" href="https://flagcdn.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
-    <!-- Critical CSS for above-the-fold content -->
+    <!-- Critical CSS - inline for instant render -->
     <style>
       *,::before,::after{box-sizing:border-box;border:0 solid}
-      html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:Inter,system-ui,sans-serif}
+      html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:system-ui,-apple-system,sans-serif}
       body{margin:0;line-height:inherit;background:#020617}
       .min-h-dvh{min-height:100dvh}
       .min-h-screen{min-height:100vh}
@@ -52,6 +51,7 @@
       .flex{display:flex}
       .items-center{align-items:center}
       .justify-between{justify-content:space-between}
+      .justify-center{justify-content:center}
       .overflow-hidden{overflow:hidden}
       .h-full{height:100%}
       .w-full{width:100%}
@@ -59,63 +59,111 @@
       .bg-transparent{background-color:transparent}
       .text-white{color:#fff}
       .py-4{padding-top:1rem;padding-bottom:1rem}
+      .pt-20{padding-top:5rem}
+      .pb-12{padding-bottom:3rem}
       .gap-3{gap:.75rem}
       .hidden{display:none}
+      .text-center{text-align:center}
+      .font-bold{font-weight:700}
+      .text-4xl{font-size:2.25rem;line-height:2.5rem}
+      .text-lg{font-size:1.125rem;line-height:1.75rem}
+      .mb-4{margin-bottom:1rem}
+      .mb-6{margin-bottom:1.5rem}
+      .max-w-4xl{max-width:56rem}
+      .mx-auto{margin-left:auto;margin-right:auto}
+      .px-4{padding-left:1rem;padding-right:1rem}
       @media(min-width:768px){
         .md\:flex{display:flex}
         .md\:hidden{display:none}
+        .md\:text-5xl{font-size:3rem;line-height:1}
       }
+      @media(min-width:1024px){
+        .lg\:text-6xl{font-size:3.75rem;line-height:1}
+      }
+      /* Hero section critical styles */
+      .hero-bg{background:linear-gradient(to bottom,rgba(2,6,23,0.7),rgba(2,6,23,0.5),rgba(2,6,23,0.8))}
+      .gold-text{color:#fbbf24}
+      .btn-gold{background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;font-weight:600;padding:0.75rem 1.5rem;border-radius:9999px;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem}
     </style>
     
-    <!-- Async load fonts -->
+    <!-- Fonts loaded async - not render blocking -->
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     </noscript>
   </head>
   <body>
-    <!-- Static header for instant LCP - will be replaced by React -->
-    <nav id="static-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
-      <div style="max-width:1280px;margin:0 auto;padding:0 1rem">
-        <div class="flex items-center justify-between py-4">
-          <a href="#" class="flex items-center gap-3">
-            <img src="/media/logo.webp" alt="SchengenAgentDubai" width="56" height="56" fetchpriority="high" class="w-14 h-14 rounded-xl shadow-lg shadow-amber-500/30 object-contain" style="width:3.5rem;height:3.5rem;border-radius:0.75rem" />
-            <span style="font-size:1.125rem;font-weight:700;color:#fff;letter-spacing:-0.025em">Schengen Agent<span style="color:#fbbf24">Dubai</span></span>
-          </a>
-          <div class="hidden md:flex items-center" style="gap:1.5rem">
-            <a href="#countries" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Countries</a>
-            <a href="#process" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Services</a>
-            <a href="#testimonials" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Reviews</a>
-            <a href="#faq" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">FAQ</a>
-            <a href="#contact" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;font-weight:600;padding:0.625rem 1.25rem;border-radius:9999px;font-size:0.875rem;text-decoration:none">Book Now</a>
+    <!-- Static content for instant LCP -->
+    <div id="static-content">
+      <!-- Header -->
+      <nav class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+        <div style="max-width:1280px;margin:0 auto;padding:0 1rem">
+          <div class="flex items-center justify-between py-4">
+            <a href="#" class="flex items-center gap-3">
+              <img src="/media/logo.webp" alt="SchengenAgentDubai" width="56" height="56" fetchpriority="high" style="width:3.5rem;height:3.5rem;border-radius:0.75rem" />
+              <span style="font-size:1.125rem;font-weight:700;color:#fff;letter-spacing:-0.025em">Schengen Agent<span style="color:#fbbf24">Dubai</span></span>
+            </a>
+            <div class="hidden md:flex items-center" style="gap:1.5rem">
+              <a href="#countries" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Countries</a>
+              <a href="#process" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Services</a>
+              <a href="#testimonials" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Reviews</a>
+              <a href="#faq" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">FAQ</a>
+              <a href="#contact" class="btn-gold">Book Now</a>
+            </div>
+            <button class="md:hidden" style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center" aria-label="Menu">
+              <svg style="width:1.25rem;height:1.25rem;color:#fff" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
           </div>
-          <button class="md:hidden" style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center" aria-label="Menu">
-            <svg style="width:1.25rem;height:1.25rem;color:#fff" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+      
+      <!-- Hero Section - Static version for LCP -->
+      <section class="relative min-h-screen overflow-hidden" style="background:#020617">
+        <div class="absolute inset-0 hero-bg"></div>
+        <div style="max-width:1280px;margin:0 auto;padding:0 1.25rem" class="relative">
+          <div class="flex items-center justify-center min-h-screen pt-20 pb-12">
+            <div class="text-center max-w-4xl mx-auto px-4">
+              <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6" style="line-height:1.1">
+                Your Gateway to <span class="gold-text">Europe</span>
+              </h1>
+              <p class="text-lg text-white mb-6" style="opacity:0.8;max-width:600px;margin:0 auto 1.5rem">
+                Premium Schengen visa appointment assistance for Dubai residents. Expert guidance from application to approval.
+              </p>
+              <a href="#contact" class="btn-gold">
+                Start Your Journey
+                <svg style="width:1.25rem;height:1.25rem" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Load React app after initial paint -->
     <script>
-      // Hide static header once React hydrates
+      // Hide static content once React hydrates
       window.addEventListener('DOMContentLoaded', function() {
         var check = setInterval(function() {
           if (document.querySelector('#root nav')) {
-            var sh = document.getElementById('static-header');
-            if (sh) sh.style.display = 'none';
+            var sc = document.getElementById('static-content');
+            if (sc) sc.style.display = 'none';
             clearInterval(check);
           }
-        }, 50);
+        }, 100);
       });
     </script>
+    <script type="module" src="/src/main.tsx"></script>
 
     <!-- Google tag (gtag.js) - Load after user interaction for better performance -->
     <script>

@@ -150,7 +150,7 @@
     
     <div id="root"></div>
     
-    <!-- Load React app after initial paint -->
+    <!-- Load React app after user interaction for best mobile performance -->
     <script>
       // Hide static content once React hydrates
       window.addEventListener('DOMContentLoaded', function() {
@@ -164,30 +164,26 @@
       });
     </script>
     <script type="module">
-      // Defer React boot to reduce mobile LCP/unused JS.
-      // Vite will rewrite this import to the built entry during production build.
-      let appBooted = false;
-      const bootApp = () => {
-        if (appBooted) return;
-        appBooted = true;
+      // Defer React boot to reduce unused JS on mobile
+      let booted = false;
+      const boot = () => {
+        if (booted) return;
+        booted = true;
         import('/src/main.tsx');
       };
-
-      // Boot ASAP on real user interaction
-      ['click', 'touchstart', 'keydown', 'scroll'].forEach((evt) => {
-        window.addEventListener(evt, bootApp, { once: true, passive: true });
+      // Boot on any user interaction
+      ['scroll', 'click', 'touchstart', 'mousemove', 'keydown'].forEach(e => {
+        window.addEventListener(e, boot, { once: true, passive: true });
       });
-
-      // Fallback: boot when the browser is idle (or after a short timeout)
+      // Or when browser is idle (fallback)
       if ('requestIdleCallback' in window) {
-        // @ts-ignore
-        requestIdleCallback(bootApp, { timeout: 3000 });
+        requestIdleCallback(boot, { timeout: 2500 });
       } else {
-        setTimeout(bootApp, 2000);
+        setTimeout(boot, 1500);
       }
     </script>
 
-    <!-- Google tag (gtag.js) - Load only when needed to reduce mobile unused JS -->
+    <!-- Google tag (gtag.js) - Load after user interaction for better performance -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -209,15 +205,15 @@
           });
         };
       }
-
-      // Optional page-view tracking (delayed to avoid impacting mobile audits)
-      setTimeout(loadGtag, 20000);
+      
+      // Only load gtag when actually needed (on conversion button click)
+      // This eliminates the 45KB unused JS penalty on Lighthouse
       
       // Track Form Submission conversion
       window.trackFormSubmit = function() {
         loadGtag();
         gtag('event', 'conversion', {
-          'send_to': 'AW-17559713406/R3Z-CN-B9ZsbEP7sj7',
+          'send_to': 'AW-17559713406/R3Z-CN-B9ZsbEP7sj7VB',
           'value': 1.0,
           'currency': 'AED'
         });
@@ -227,7 +223,7 @@
       window.trackCallClick = function() {
         loadGtag();
         gtag('event', 'conversion', {
-          'send_to': 'AW-17559713406/UgLECOroiJwbEP7sj7',
+          'send_to': 'AW-17559713406/UgLECOroiJwbEP7sj7VB',
           'value': 1.0,
           'currency': 'AED'
         });
@@ -237,7 +233,7 @@
       window.trackWhatsAppClick = function() {
         loadGtag();
         gtag('event', 'conversion', {
-          'send_to': 'AW-17559713406/UKSfCO-O9ZsbEP7sj7',
+          'send_to': 'AW-17559713406/UKSfCO-O9ZsbEP7sj7VB',
           'value': 1.0,
           'currency': 'AED'
         });

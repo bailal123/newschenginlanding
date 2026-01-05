@@ -19,31 +19,29 @@ const TermsOfService = lazy(() => import('./pages/TermsOfService').then(m => ({ 
 const SectionLoader = () => <div className="min-h-[200px]" />
 
 function HomePage() {
-  const [showBelowFold, setShowBelowFold] = useState(false)
+  // Defer loading below-fold sections until user scrolls or after delay
+  const [loadSections, setLoadSections] = useState(false)
 
   useEffect(() => {
-    let done = false
-    const enable = () => {
-      if (done) return
-      done = true
-      setShowBelowFold(true)
+    let loaded = false
+    const load = () => {
+      if (loaded) return
+      loaded = true
+      setLoadSections(true)
     }
 
-    // Load sections on interaction (fast for real users)
-    ;['scroll', 'click', 'touchstart', 'keydown'].forEach((evt) => {
-      window.addEventListener(evt, enable, { once: true, passive: true })
-    })
+    // Load on scroll (user is exploring)
+    const onScroll = () => {
+      if (window.scrollY > 100) load()
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
 
-    // Or when idle/after a short delay
-    // @ts-ignore
-    if ('requestIdleCallback' in window) requestIdleCallback(enable, { timeout: 3000 })
-    const t = window.setTimeout(enable, 4000)
+    // Or after a short delay as fallback
+    const timer = setTimeout(load, 2000)
 
     return () => {
-      window.clearTimeout(t)
-      ;['scroll', 'click', 'touchstart', 'keydown'].forEach((evt) => {
-        window.removeEventListener(evt, enable)
-      })
+      window.removeEventListener('scroll', onScroll)
+      clearTimeout(timer)
     }
   }, [])
 
@@ -51,7 +49,7 @@ function HomePage() {
     <div className="min-h-dvh antialiased">
       <Header />
       <Hero />
-      {showBelowFold ? (
+      {loadSections ? (
         <Suspense fallback={<SectionLoader />}>
           <SchengenCountries />
           <TrustAuthority />

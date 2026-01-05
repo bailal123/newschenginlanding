@@ -81,7 +81,7 @@ export function Hero() {
                       </svg>
                     ))}
                   </div>
-                  <span className="text-xs text-slate-500">(2,847)</span>
+                  <span className="text-xs text-slate-500">(500)</span>
                 </div>
               </div>
             </div>

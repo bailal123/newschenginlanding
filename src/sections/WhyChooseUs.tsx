@@ -9,7 +9,7 @@ const features = [
       </svg>
     ),
     title: '5+ Years of Experience',
-    description: 'Over a decade of expertise in Schengen travel applications for Dubai residents.',
+    description: 'Over a year of expertise in Schengen travel applications for Dubai residents.',
     highlight: 'Experienced',
   },
   {

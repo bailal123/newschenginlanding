@@ -23,12 +23,15 @@
 
     <!-- Preload critical LCP image -->
     <link rel="preload" href="/media/logo.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preload" href="/media/hero-poster.jpg" as="image" fetchpriority="high" />
     
     <!-- Preconnect to external origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://flagcdn.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="dns-prefetch" href="https://flagcdn.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
     <!-- Critical CSS for above-the-fold content -->
     <style>
@@ -81,7 +84,7 @@
       <div style="max-width:1280px;margin:0 auto;padding:0 1rem">
         <div class="flex items-center justify-between py-4">
           <a href="#" class="flex items-center gap-3">
-            <img src="/media/logo.webp" alt="SchengenDubai" width="56" height="56" fetchpriority="high" class="w-14 h-14 rounded-xl shadow-lg shadow-amber-500/30 object-contain" style="width:3.5rem;height:3.5rem;border-radius:0.75rem" />
+            <img src="/media/logo.webp" alt="SchengenAgentDubai" width="56" height="56" fetchpriority="high" class="w-14 h-14 rounded-xl shadow-lg shadow-amber-500/30 object-contain" style="width:3.5rem;height:3.5rem;border-radius:0.75rem" />
             <span style="font-size:1.125rem;font-weight:700;color:#fff;letter-spacing:-0.025em">Schengen Agent<span style="color:#fbbf24">Dubai</span></span>
           </a>
           <div class="hidden md:flex items-center" style="gap:1.5rem">
@@ -114,29 +117,38 @@
       });
     </script>
 
-    <!-- Google tag (gtag.js) - Delayed loading for performance -->
+    <!-- Google tag (gtag.js) - Load after user interaction for better performance -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
       
-      // Load gtag.js after 3 seconds to not affect page performance
-      setTimeout(function() {
+      var gtagLoaded = false;
+      function loadGtag() {
+        if (gtagLoaded) return;
+        gtagLoaded = true;
+        
         var script = document.createElement('script');
         script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17559713406';
         script.async = true;
         document.head.appendChild(script);
         
-        // Configure after script loads
         script.onload = function() {
+          gtag('js', new Date());
           gtag('config', 'AW-17559713406', {
             'send_page_view': true
           });
         };
-      }, 3000);
+      }
+      
+      // Load on user interaction or after 5 seconds (whichever comes first)
+      ['scroll', 'click', 'touchstart', 'keydown'].forEach(function(evt) {
+        window.addEventListener(evt, loadGtag, { once: true, passive: true });
+      });
+      setTimeout(loadGtag, 5000);
       
       // Track Form Submission conversion
       window.trackFormSubmit = function() {
+        loadGtag();
         gtag('event', 'conversion', {
           'send_to': 'AW-17559713406/R3Z-CN-B9ZsbEP7sj7VB',
           'value': 1.0,
@@ -146,6 +158,7 @@
       
       // Track Call Click conversion
       window.trackCallClick = function() {
+        loadGtag();
         gtag('event', 'conversion', {
           'send_to': 'AW-17559713406/UgLECOroiJwbEP7sj7VB',
           'value': 1.0,
@@ -155,6 +168,7 @@
       
       // Track WhatsApp Click conversion
       window.trackWhatsAppClick = function() {
+        loadGtag();
         gtag('event', 'conversion', {
           'send_to': 'AW-17559713406/UKSfCO-O9ZsbEP7sj7VB',
           'value': 1.0,

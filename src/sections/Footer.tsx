@@ -10,15 +10,15 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <picture>
                 <source srcSet="/media/logo.webp" type="image/webp" />
-                <img src="/media/logo.png" alt="SchengenDubai" width="40" height="40" loading="lazy" className="w-10 h-10 rounded-xl object-contain" />
+                <img src="/media/logo.png" alt="SchengenAgentDubai" width="40" height="40" loading="lazy" className="w-10 h-10 rounded-xl object-contain" />
               </picture>
-              <span className="text-xl font-bold">Schengen<span className="text-amber-400">Dubai</span></span>
+              <span className="text-xl font-bold">SchengenAgent<span className="text-amber-400">Dubai</span></span>
             </div>
             <p className="text-slate-400 mb-6 max-w-sm leading-relaxed">
               Schengen appointment services in Dubai. Expert document preparation, 
               quick booking, and complete guidance for your European journey.
             </p>
-            <div className="flex gap-3">
+            {/* <div className="flex gap-3">
               {['facebook', 'instagram', 'linkedin', 'twitter'].map((social) => (
                 <a
                   key={social}
@@ -29,7 +29,7 @@ export function Footer() {
                   <div className="w-4 h-4 bg-white/50 rounded-sm" />
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Links */}

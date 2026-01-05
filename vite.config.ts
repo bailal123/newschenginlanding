@@ -8,11 +8,25 @@ export default defineConfig({
     // Optimize chunk sizes
     rollupOptions: {
       output: {
-        manualChunks: {
-          'framer-motion': ['framer-motion'],
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+        manualChunks: (id) => {
+          // React core in separate chunk
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+            return 'react-core';
+          }
+          // React Router in separate chunk
+          if (id.includes('react-router')) {
+            return 'react-router';
+          }
+          // Framer Motion - loaded lazily with sections that use it
+          if (id.includes('framer-motion')) {
+            return 'framer-motion';
+          }
         },
       },
     },
+    // Smaller chunks for better caching
+    chunkSizeWarningLimit: 500,
+    // CSS code splitting
+    cssCodeSplit: true,
   },
 })

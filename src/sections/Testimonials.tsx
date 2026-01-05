@@ -12,7 +12,7 @@ const testimonials = [
   },
   {
     name: 'Fatima Hassan',
-    role: 'Doctor, Saudi Arabia',
+    role: 'Doctor, UAE',
     avatar: '👩‍⚕️',
     rating: 5,
     text: 'I was nervous about my first Schengen application, but the team made it so easy. They reviewed all my documents and caught issues I would have missed. Highly recommend!',
@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     name: 'Mohammed Al-Qasimi',
-    role: 'Engineer, Qatar',
+    role: 'Engineer, UAE',
     avatar: '👨‍💻',
     rating: 5,
     text: 'After a previous rejection with another agency, I came here and got approved. Their expertise in understanding embassy requirements is unmatched. Thank you!',
@@ -64,7 +64,7 @@ export function Testimonials() {
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what our clients say about 
-              their experience with our premium visa services.
+              their experience with our premium visa support services.
             </p>
           </motion.div>
         </div>

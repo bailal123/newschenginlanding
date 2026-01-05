@@ -82,7 +82,7 @@
         <div class="flex items-center justify-between py-4">
           <a href="#" class="flex items-center gap-3">
             <img src="/media/logo.webp" alt="SchengenDubai" width="56" height="56" fetchpriority="high" class="w-14 h-14 rounded-xl shadow-lg shadow-amber-500/30 object-contain" style="width:3.5rem;height:3.5rem;border-radius:0.75rem" />
-            <span style="font-size:1.125rem;font-weight:700;color:#fff;letter-spacing:-0.025em">Schengen<span style="color:#fbbf24">Dubai</span></span>
+            <span style="font-size:1.125rem;font-weight:700;color:#fff;letter-spacing:-0.025em">Schengen Agent<span style="color:#fbbf24">Dubai</span></span>
           </a>
           <div class="hidden md:flex items-center" style="gap:1.5rem">
             <a href="#countries" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Countries</a>
@@ -112,6 +112,55 @@
           }
         }, 50);
       });
+    </script>
+
+    <!-- Google tag (gtag.js) - Delayed loading for performance -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      // Load gtag.js after 3 seconds to not affect page performance
+      setTimeout(function() {
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17559713406';
+        script.async = true;
+        document.head.appendChild(script);
+        
+        // Configure after script loads
+        script.onload = function() {
+          gtag('config', 'AW-17559713406', {
+            'send_page_view': true
+          });
+        };
+      }, 3000);
+      
+      // Track Form Submission conversion
+      window.trackFormSubmit = function() {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-17559713406/R3Z-CN-B9ZsbEP7sj7VB',
+          'value': 1.0,
+          'currency': 'AED'
+        });
+      };
+      
+      // Track Call Click conversion
+      window.trackCallClick = function() {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-17559713406/UgLECOroiJwbEP7sj7VB',
+          'value': 1.0,
+          'currency': 'AED'
+        });
+      };
+      
+      // Track WhatsApp Click conversion
+      window.trackWhatsAppClick = function() {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-17559713406/UKSfCO-O9ZsbEP7sj7VB',
+          'value': 1.0,
+          'currency': 'AED'
+        });
+      };
     </script>
   </body>
 </html>

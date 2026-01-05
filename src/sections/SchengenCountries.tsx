@@ -8,13 +8,13 @@ const countries = [
   { name: 'Spain', code: 'ES', popular: true },
   { name: 'Netherlands', code: 'NL', popular: true },
   { name: 'Switzerland', code: 'CH', popular: true },
-  { name: 'Austria', code: 'AT' },
+  { name: 'Austria', code: 'AT', popular: true },
   { name: 'Belgium', code: 'BE' },
   { name: 'Czech Republic', code: 'CZ' },
   { name: 'Denmark', code: 'DK' },
   { name: 'Estonia', code: 'EE' },
   { name: 'Finland', code: 'FI' },
-  { name: 'Greece', code: 'GR' },
+  { name: 'Greece', code: 'GR', popular: true },
   { name: 'Hungary', code: 'HU' },
   { name: 'Iceland', code: 'IS' },
   { name: 'Latvia', code: 'LV' },
@@ -24,7 +24,7 @@ const countries = [
   { name: 'Malta', code: 'MT' },
   { name: 'Norway', code: 'NO' },
   { name: 'Poland', code: 'PL' },
-  { name: 'Portugal', code: 'PT' },
+  { name: 'Portugal', code: 'PT'  , popular: true },
   { name: 'Slovakia', code: 'SK' },
   { name: 'Slovenia', code: 'SI' },
   { name: 'Sweden', code: 'SE' },
@@ -61,11 +61,11 @@ export function SchengenCountries() {
               29 Schengen Countries
             </span>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              One Visa, <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Endless</span>{' '}
+               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Endless</span>{' '}
               <span className="gold-accent">Destinations</span>
             </h2>
             <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Unlock access to 29 European countries with a single Schengen visa. 
+              Unlock access to 29 European countries with a single Schengen application. 
               Travel freely across the most beautiful destinations in the world.
             </p>
           </motion.div>
@@ -105,6 +105,7 @@ export function SchengenCountries() {
                 href="https://wa.me/971568456002"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => window.trackWhatsAppClick?.()}
                 initial={{ opacity: 0, scale: 0.5, rotateY: 0 }}
                 whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
                 viewport={{ once: true }}
@@ -178,6 +179,7 @@ export function SchengenCountries() {
                 href="https://wa.me/971568456002"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => window.trackWhatsAppClick?.()}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -217,9 +219,15 @@ export function SchengenCountries() {
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 shadow-2xl shadow-blue-500/30">
             <div className="text-white text-center sm:text-left">
               <p className="text-blue-100 text-sm font-medium mb-1">Ready to explore Europe?</p>
-              <p className="text-xl sm:text-2xl font-bold">Start Your Visa Application Today</p>
+              <p className="text-xl sm:text-2xl font-bold">Start Your Schengen Application Today</p>
             </div>
-            <a href="https://wa.me/971568456002" target="_blank" rel="noopener noreferrer" className="btn-premium bg-white text-blue-700 hover:bg-blue-50 hover:scale-105 shadow-lg">
+            <a 
+              href="https://wa.me/971568456002" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              onClick={() => window.trackWhatsAppClick?.()}
+              className="btn-premium bg-white text-blue-700 hover:bg-blue-50 hover:scale-105 shadow-lg"
+            >
               Apply Now
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

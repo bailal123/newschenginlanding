@@ -4,7 +4,7 @@ import { Container } from '../components/Container'
 const steps = [
   {
     number: '01',
-    title: 'Free Consultation',
+    title: 'Eligibility Assessment',
     description: 'Share your travel plans and we\'ll confirm the right path for your Schengen appointment in Dubai.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,7 +37,7 @@ const steps = [
   },
   {
     number: '04',
-    title: 'Embassy Visit Support',
+    title: 'Interview Support',
     description: 'Complete guidance on what to expect and how to present your application confidently.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

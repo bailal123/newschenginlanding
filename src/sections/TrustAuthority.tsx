@@ -4,10 +4,10 @@ import { AnimatedCounter } from '../components/AnimatedCounter'
 
 const stats = [
   {
-    value: 10,
+    value: 5,
     suffix: '+',
     label: 'Years Experience',
-    description: 'Trusted expertise since 2014',
+    description: 'Trusted expertise since 2020',
     color: 'from-amber-400 to-amber-600',
     bgColor: 'bg-amber-500/10',
     textColor: 'text-amber-400',
@@ -62,14 +62,14 @@ const stats = [
   },
 ]
 
-const partners = [
-  { name: 'Emirates', logo: '✈️' },
-  { name: 'Qatar Airways', logo: '🛫' },
-  { name: 'Etihad', logo: '🛩️' },
-  { name: 'Turkish Airlines', logo: '✈️' },
-  { name: 'Lufthansa', logo: '🛫' },
-  { name: 'Air France', logo: '🛩️' },
-]
+// const partners = [
+//   { name: 'Emirates', logo: '✈️' },
+//   { name: 'Qatar Airways', logo: '🛫' },
+//   { name: 'Etihad', logo: '🛩️' },
+//   { name: 'Turkish Airlines', logo: '✈️' },
+//   { name: 'Lufthansa', logo: '🛫' },
+//   { name: 'Air France', logo: '🛩️' },
+// ]
 
 export function TrustAuthority() {
   return (
@@ -92,7 +92,7 @@ export function TrustAuthority() {
       
       <Container className="relative">
         {/* Header */}
-        <div className="text-center mb-16">
+        {/* <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -128,8 +128,32 @@ export function TrustAuthority() {
               expertise in Schengen appointment services in Dubai.
             </p>
           </motion.div>
-        </div>
-
+        </div> */}
+         {/* Bottom Highlight */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-gradient-to-r from-amber-500/20 via-amber-400/10 to-amber-500/20 border border-amber-500/30">
+            <div className="flex -space-x-3">
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-600 to-slate-800 border-2 border-slate-900 flex items-center justify-center text-white text-xs font-bold"
+                >
+                  {['A', 'S', 'M', 'K'][i - 1]}
+                </div>
+              ))}
+            </div>
+            <div className="text-left">
+              <p className="text-white font-semibold">Join 10,000+ satisfied travelers</p>
+              <p className="text-sm text-amber-400">Who trusted us with their European journey</p>
+            </div>
+          </div>
+        </motion.div>
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-20">
           {stats.map((stat, i) => (
@@ -168,7 +192,7 @@ export function TrustAuthority() {
         </div>
 
         {/* Partners Section */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -198,33 +222,9 @@ export function TrustAuthority() {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
-        {/* Bottom Highlight */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 text-center"
-        >
-          <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-gradient-to-r from-amber-500/20 via-amber-400/10 to-amber-500/20 border border-amber-500/30">
-            <div className="flex -space-x-3">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-600 to-slate-800 border-2 border-slate-900 flex items-center justify-center text-white text-xs font-bold"
-                >
-                  {['A', 'S', 'M', 'K'][i - 1]}
-                </div>
-              ))}
-            </div>
-            <div className="text-left">
-              <p className="text-white font-semibold">Join 10,000+ satisfied travelers</p>
-              <p className="text-sm text-amber-400">Who trusted us with their European journey</p>
-            </div>
-          </div>
-        </motion.div>
+       
       </Container>
     </section>
   )

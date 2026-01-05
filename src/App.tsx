@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { lazy, Suspense } from 'react'
 import { Header } from './components/Header'
 import { Hero } from './sections/Hero'
 import { Footer } from './sections/Footer'
@@ -15,53 +15,20 @@ const FinalCTA = lazy(() => import('./sections/FinalCTA').then(m => ({ default: 
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })))
 const TermsOfService = lazy(() => import('./pages/TermsOfService').then(m => ({ default: m.TermsOfService })))
 
-// Minimal loading fallback
-const SectionLoader = () => <div className="min-h-[200px]" />
-
 function HomePage() {
-  // Defer loading below-fold sections until user scrolls or after delay
-  const [loadSections, setLoadSections] = useState(false)
-
-  useEffect(() => {
-    let loaded = false
-    const load = () => {
-      if (loaded) return
-      loaded = true
-      setLoadSections(true)
-    }
-
-    // Load on scroll (user is exploring)
-    const onScroll = () => {
-      if (window.scrollY > 100) load()
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-
-    // Or after a short delay as fallback
-    const timer = setTimeout(load, 2000)
-
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      clearTimeout(timer)
-    }
-  }, [])
-
   return (
     <div className="min-h-dvh antialiased">
       <Header />
       <Hero />
-      {loadSections ? (
-        <Suspense fallback={<SectionLoader />}>
-          <SchengenCountries />
-          <TrustAuthority />
-          <ProcessTimeline />
-          <WhyChooseUs />
-          <Testimonials />
-          <FAQ />
-          <FinalCTA />
-        </Suspense>
-      ) : (
-        <SectionLoader />
-      )}
+      <Suspense fallback={null}>
+        <SchengenCountries />
+        <TrustAuthority />
+        <ProcessTimeline />
+        <WhyChooseUs />
+        <Testimonials />
+        <FAQ />
+        <FinalCTA />
+      </Suspense>
       <Footer />
     </div>
   )
@@ -73,12 +40,12 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/privacy" element={
-          <Suspense fallback={<SectionLoader />}>
+          <Suspense fallback={null}>
             <PrivacyPolicy />
           </Suspense>
         } />
         <Route path="/terms" element={
-          <Suspense fallback={<SectionLoader />}>
+          <Suspense fallback={null}>
             <TermsOfService />
           </Suspense>
         } />

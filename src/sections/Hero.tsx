@@ -1,12 +1,5 @@
 import { Container } from '../components/Container'
 
-// Pre-generated static particle positions
-const PARTICLES = [
-  { left: 15, top: 25, delay: 0.5 }, { left: 85, top: 10, delay: 1.2 },
-  { left: 30, top: 70, delay: 2.1 }, { left: 60, top: 45, delay: 0.8 },
-  { left: 10, top: 55, delay: 3.5 }, { left: 90, top: 80, delay: 1.8 },
-]
-
 export function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-slate-950">
@@ -28,21 +21,6 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-blue-950/40 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(37,99,235,0.2),transparent)]" />
-        
-        {/* Animated Particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {PARTICLES.map((particle, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse-slow"
-              style={{
-                left: `${particle.left}%`,
-                top: `${particle.top}%`,
-                animationDelay: `${particle.delay}s`,
-              }}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Hero Content */}

@@ -98,146 +98,30 @@
     </noscript>
   </head>
   <body>
-    <!-- Static content for instant LCP -->
-    <div id="static-content">
-      <!-- Header -->
-      <nav class="fixed top-0 left-0 right-0 z-50 bg-transparent">
-        <div style="max-width:1280px;margin:0 auto;padding:0 1rem">
-          <div class="flex items-center justify-between py-4">
-            <a href="#" class="flex items-center gap-3">
-              <img src="/media/logo.webp" alt="SchengenAgentDubai" width="56" height="56" fetchpriority="high" style="width:3.5rem;height:3.5rem;border-radius:0.75rem" />
-              <span style="font-size:1.125rem;font-weight:700;color:#fff;letter-spacing:-0.025em">Schengen Agent<span style="color:#fbbf24">Dubai</span></span>
-            </a>
-            <div class="hidden md:flex items-center" style="gap:1.5rem">
-              <a href="#countries" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Countries</a>
-              <a href="#process" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Services</a>
-              <a href="#testimonials" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">Reviews</a>
-              <a href="#faq" style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.8)">FAQ</a>
-              <a href="#contact" class="btn-gold">Book Now</a>
-            </div>
-            <button class="md:hidden" style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center" aria-label="Menu">
-              <svg style="width:1.25rem;height:1.25rem;color:#fff" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
-      
-      <!-- Hero Section - Static version for LCP -->
-      <section class="relative min-h-screen overflow-hidden" style="background:#020617">
-        <div class="absolute inset-0 hero-bg"></div>
-        <div style="max-width:1280px;margin:0 auto;padding:0 1.25rem" class="relative">
-          <div class="flex items-center justify-center min-h-screen pt-20 pb-12">
-            <div class="text-center max-w-4xl mx-auto px-4">
-              <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6" style="line-height:1.1">
-                Your Gateway to <span class="gold-text">Europe</span>
-              </h1>
-              <p class="text-lg text-white mb-6" style="opacity:0.8;max-width:600px;margin:0 auto 1.5rem">
-                Premium Schengen visa appointment assistance for Dubai residents. Expert guidance from application to approval.
-              </p>
-              <a href="#contact" class="btn-gold">
-                Start Your Journey
-                <svg style="width:1.25rem;height:1.25rem" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    
     <div id="root"></div>
-    
-    <!-- Load React app after user interaction for best mobile performance -->
-    <script>
-      // Hide static content once React hydrates
-      window.addEventListener('DOMContentLoaded', function() {
-        var check = setInterval(function() {
-          if (document.querySelector('#root nav')) {
-            var sc = document.getElementById('static-content');
-            if (sc) sc.style.display = 'none';
-            clearInterval(check);
-          }
-        }, 100);
-      });
-    </script>
-    <script type="module">
-      // Defer React boot to reduce unused JS on mobile
-      let booted = false;
-      const boot = () => {
-        if (booted) return;
-        booted = true;
-        import('/src/main.tsx');
-      };
-      // Boot on any user interaction
-      ['scroll', 'click', 'touchstart', 'mousemove', 'keydown'].forEach(e => {
-        window.addEventListener(e, boot, { once: true, passive: true });
-      });
-      // Or when browser is idle (fallback)
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(boot, { timeout: 2500 });
-      } else {
-        setTimeout(boot, 1500);
-      }
-    </script>
+    <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Google tag (gtag.js) - Load after user interaction for better performance -->
+    <!-- Google tag (gtag.js) - Lazy loaded on conversion -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      
       var gtagLoaded = false;
-      function loadGtag() {
-        if (gtagLoaded) return;
+      function loadGtag(cb) {
+        if (gtagLoaded) { if(cb) cb(); return; }
         gtagLoaded = true;
-        
-        var script = document.createElement('script');
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17559713406';
-        script.async = true;
-        document.head.appendChild(script);
-        
-        script.onload = function() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17559713406';
+        s.async = true;
+        s.onload = function() {
           gtag('js', new Date());
-          gtag('config', 'AW-17559713406', {
-            'send_page_view': true
-          });
+          gtag('config', 'AW-17559713406');
+          if(cb) cb();
         };
+        document.head.appendChild(s);
       }
-      
-      // Only load gtag when actually needed (on conversion button click)
-      // This eliminates the 45KB unused JS penalty on Lighthouse
-      
-      // Track Form Submission conversion
-      window.trackFormSubmit = function() {
-        loadGtag();
-        gtag('event', 'conversion', {
-          'send_to': 'AW-17559713406/R3Z-CN-B9ZsbEP7sj7VB',
-          'value': 1.0,
-          'currency': 'AED'
-        });
-      };
-      
-      // Track Call Click conversion
-      window.trackCallClick = function() {
-        loadGtag();
-        gtag('event', 'conversion', {
-          'send_to': 'AW-17559713406/UgLECOroiJwbEP7sj7VB',
-          'value': 1.0,
-          'currency': 'AED'
-        });
-      };
-      
-      // Track WhatsApp Click conversion
-      window.trackWhatsAppClick = function() {
-        loadGtag();
-        gtag('event', 'conversion', {
-          'send_to': 'AW-17559713406/UKSfCO-O9ZsbEP7sj7VB',
-          'value': 1.0,
-          'currency': 'AED'
-        });
-      };
+      window.trackFormSubmit = function() { loadGtag(function() { gtag('event', 'conversion', {'send_to': 'AW-17559713406/R3Z-CN-B9ZsbEP7sj7VB', 'value': 1.0, 'currency': 'AED'}); }); };
+      window.trackCallClick = function() { loadGtag(function() { gtag('event', 'conversion', {'send_to': 'AW-17559713406/UgLECOroiJwbEP7sj7VB', 'value': 1.0, 'currency': 'AED'}); }); };
+      window.trackWhatsAppClick = function() { loadGtag(function() { gtag('event', 'conversion', {'send_to': 'AW-17559713406/UKSfCO-O9ZsbEP7sj7VB', 'value': 1.0, 'currency': 'AED'}); }); };
     </script>
   </body>
 </html>

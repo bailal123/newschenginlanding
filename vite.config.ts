@@ -9,21 +9,44 @@ export default defineConfig({
     cssInjectedByJsPlugin(), // Inject CSS via JS to avoid render-blocking
   ],
   build: {
+    // Optimize for production
+    target: 'esnext',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info'],
+        passes: 2,
+      },
+      mangle: {
+        safari10: true,
+      },
+    },
     // Optimize chunk sizes
     rollupOptions: {
       output: {
+        // Granular chunking for better caching and lazy loading
         manualChunks: (id) => {
-          // React core in separate chunk
+          // React core - critical, loaded immediately
           if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
-            return 'react-core';
+            return 'react';
           }
-          // React Router in separate chunk
+          // Scheduler (React dependency)
+          if (id.includes('node_modules/scheduler/')) {
+            return 'react';
+          }
+          // React Router - separate chunk
           if (id.includes('react-router')) {
-            return 'react-router';
+            return 'router';
           }
-          // Framer Motion - loaded lazily with sections that use it
+          // Framer Motion - separate chunk for lazy loading
           if (id.includes('framer-motion')) {
-            return 'framer-motion';
+            return 'motion';
+          }
+          // EmailJS - separate chunk
+          if (id.includes('@emailjs')) {
+            return 'emailjs';
           }
         },
       },
@@ -32,5 +55,9 @@ export default defineConfig({
     chunkSizeWarningLimit: 500,
     // CSS code splitting
     cssCodeSplit: true,
+  },
+  // Optimize dependencies pre-bundling
+  optimizeDeps: {
+    include: ['react', 'react-dom'],
   },
 })

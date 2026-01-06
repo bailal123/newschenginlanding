@@ -24,6 +24,7 @@
     <!-- Preconnect to external origins FIRST -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.emailjs.com" />
     
     <!-- Preload critical resources -->
     <link rel="preload" href="/media/logo.webp" as="image" type="image/webp" fetchpriority="high" />
@@ -98,33 +99,131 @@
     </noscript>
   </head>
   <body>
+    <!-- Google Tag Manager - Define tracking functions BEFORE React loads -->
+    <script>
+      (function() {
+        'use strict';
+        
+        // Initialize dataLayer
+        window.dataLayer = window.dataLayer || [];
+        
+        // gtag function - works even before script loads
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+        
+        // Track script loading state
+        var gtagScriptLoaded = false;
+        var gtagInitialized = false;
+        var pendingCallbacks = [];
+        
+        // Load Google Tag Manager script
+        function loadGtagScript(callback) {
+          // If already initialized, run callback immediately
+          if (gtagInitialized) {
+            if (callback) callback();
+            return;
+          }
+          
+          // If callback provided, add to pending
+          if (callback) {
+            pendingCallbacks.push(callback);
+          }
+          
+          // If script already loading, wait for it
+          if (gtagScriptLoaded) {
+            return;
+          }
+          
+          gtagScriptLoaded = true;
+          
+          var script = document.createElement('script');
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17559713406';
+          script.async = true;
+          
+          script.onload = function() {
+            // Initialize gtag
+            gtag('js', new Date());
+            gtag('config', 'AW-17559713406');
+            gtagInitialized = true;
+            
+            // Run all pending callbacks
+            for (var i = 0; i < pendingCallbacks.length; i++) {
+              try {
+                pendingCallbacks[i]();
+              } catch (e) {
+                console.error('GTM callback error:', e);
+              }
+            }
+            pendingCallbacks = [];
+          };
+          
+          script.onerror = function() {
+            console.error('Failed to load Google Tag Manager');
+            gtagScriptLoaded = false;
+          };
+          
+          document.head.appendChild(script);
+        }
+        
+        // Expose loadGtag globally
+        window.loadGtag = loadGtagScript;
+        
+        // Track Form Submit Conversion
+        window.trackFormSubmit = function() {
+          loadGtagScript(function() {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17559713406/R3Z-CN-B9ZsbEP7sj7VB',
+              'value': 1.0,
+              'currency': 'AED'
+            });
+          });
+        };
+        
+        // Track Call Click Conversion
+        window.trackCallClick = function() {
+          loadGtagScript(function() {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17559713406/UgLECOroiJwbEP7sj7VB',
+              'value': 1.0,
+              'currency': 'AED'
+            });
+          });
+        };
+        
+        // Track WhatsApp Click Conversion
+        window.trackWhatsAppClick = function() {
+          loadGtagScript(function() {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17559713406/UKSfCO-O9ZsbEP7sj7VB',
+              'value': 1.0,
+              'currency': 'AED'
+            });
+          });
+        };
+        
+        // Auto-load gtag after 5 seconds (for page view tracking)
+        // Uses requestIdleCallback for better performance, falls back to setTimeout
+        function scheduleGtagLoad() {
+          if ('requestIdleCallback' in window) {
+            setTimeout(function() {
+              requestIdleCallback(function() {
+                loadGtagScript();
+              }, { timeout: 10000 });
+            }, 5000);
+          } else {
+            setTimeout(loadGtagScript, 5000);
+          }
+        }
+        
+        // Start the delayed load
+        scheduleGtagLoad();
+        
+      })();
+    </script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-
-    <!-- Google tag (gtag.js) - Load after 5 seconds for performance -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      var gtagLoaded = false;
-      function loadGtag(cb) {
-        if (gtagLoaded) { if(cb) cb(); return; }
-        gtagLoaded = true;
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17559713406';
-        s.async = true;
-        s.onload = function() {
-          gtag('js', new Date());
-          gtag('config', 'AW-17559713406');
-          if(cb) cb();
-        };
-        document.head.appendChild(s);
-      }
-      // Load gtag after 5 seconds
-      setTimeout(loadGtag, 5000);
-      
-      window.trackFormSubmit = function() { loadGtag(function() { gtag('event', 'conversion', {'send_to': 'AW-17559713406/R3Z-CN-B9ZsbEP7sj7VB', 'value': 1.0, 'currency': 'AED'}); }); };
-      window.trackCallClick = function() { loadGtag(function() { gtag('event', 'conversion', {'send_to': 'AW-17559713406/UgLECOroiJwbEP7sj7VB', 'value': 1.0, 'currency': 'AED'}); }); };
-      window.trackWhatsAppClick = function() { loadGtag(function() { gtag('event', 'conversion', {'send_to': 'AW-17559713406/UKSfCO-O9ZsbEP7sj7VB', 'value': 1.0, 'currency': 'AED'}); }); };
-    </script>
   </body>
 </html>

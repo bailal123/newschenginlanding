@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { lazy, Suspense, useEffect, useState, useRef } from 'react'
+import { lazy, Suspense, useEffect, useState, useRef, startTransition } from 'react'
 import { Header } from './components/Header'
 import { Hero } from './sections/Hero'
 import { Footer } from './sections/Footer'
@@ -28,11 +28,14 @@ function LazyLoadOnScroll({ children }: { children: React.ReactNode }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setLoad(true)
+          // Use startTransition for non-urgent updates
+          startTransition(() => {
+            setLoad(true)
+          })
           observer.disconnect()
         }
       },
-      { rootMargin: '200px' } // Start loading 200px before visible
+      { rootMargin: '300px' } // Start loading 300px before visible
     )
 
     observer.observe(el)

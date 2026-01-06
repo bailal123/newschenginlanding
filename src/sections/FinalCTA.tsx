@@ -4,9 +4,9 @@ import emailjs from '@emailjs/browser'
 import { Container } from '../components/Container'
 
 // EmailJS Configuration - Replace with your actual IDs
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
+const EMAILJS_SERVICE_ID = 'service_2fgd3ee'
+const EMAILJS_TEMPLATE_ID = 'template_iq2uxde'
+const EMAILJS_PUBLIC_KEY = 'shumwstKIw_MET8A9'
 
 export function FinalCTA() {
   const reduceMotion = useReducedMotion()
